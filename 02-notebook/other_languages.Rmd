@@ -1,0 +1,63 @@
+---
+title: "Other Languages"
+output: html_notebook
+---
+
+Let's use SQL as an example, specifically sqlite
+
+```{r}
+library(DBI)
+library(RSQLite)
+
+rm(list = ls())
+
+con = dbConnect(SQLite(), dbname = "../data/survey.db")
+```
+
+# SQL Directly
+
+```
+```{sql connection=con}
+SELECT * from Person;
+```
+```
+
+```{sql connection=con}
+SELECT * from Person;
+```
+
+# Save SQL results into an R Variable
+
+```
+```{sql connection=con, output.var=df_sql}
+SELECT * from Person;
+```
+```
+
+```{sql connection=con, output.var=df_sql}
+SELECT * from Person;
+```
+
+```{r}
+df_sql
+```
+
+# Use an R Variable in SQL Querry
+
+```{r}
+name = 'William'
+```
+
+```
+```{sql connection=con, output.var=df_sql}
+SELECT * from Person WHERE personal = ?name;
+```
+```
+
+```{sql connection=con, output.var=df_sql}
+SELECT * from Person WHERE personal = ?name
+```
+
+```{r}
+df_sql
+```

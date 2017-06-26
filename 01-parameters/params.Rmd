@@ -1,0 +1,21 @@
+---
+title: "parameters"
+author: "Daniel Chen"
+date: ""
+output: html_document
+params:
+  data: ""
+---
+
+```{r}
+if (params$data == 'cars') {
+    df <- cars
+} else if (params$data == 'mtcars') {
+    df <- mtcars
+} else {
+    df <- ggplot2::diamonds
+}
+
+print(head(df))
+```
+
